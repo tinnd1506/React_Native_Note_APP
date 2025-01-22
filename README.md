@@ -26,14 +26,11 @@
 - Uses themed components for consistent styling
 
 ## Component Relationships
-
-```mermaid
 graph TD
     A[_layout.tsx] --> B[index.tsx]
     A --> C[notes/[id].tsx]
     A --> D[+not-found.tsx]
     B --> C
-```
 
 ## Styling Approach
 - Uses StyleSheet for component-specific styles
