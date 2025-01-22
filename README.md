@@ -1,50 +1,48 @@
-# Welcome to your Expo app 👋
+# Note App 
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+## Main Components
 
-## Get started
+### Root Layout (`_layout.tsx`)
+- Sets up stack navigation with routes:
+  - Home (`index`)
+  - Note Details (`notes/[id]`)
+  - 404 Page (`+not-found`)
 
-1. Install dependencies
+### Home Screen (`index.tsx`)
+- Displays list of notes using FlatList
+- Each note is rendered as a card with:
+  - Title
+  - Preview text
+- Implements navigation to note details screen
+- Uses custom styles for dark theme
 
-   ```bash
-   npm install
-   ```
+### Note Details (`notes/[id].tsx`)
+- Displays full content of a selected note
+- Uses dynamic routing with note ID parameter
 
-2. Start the app
+### 404 Handling (`+not-found.tsx`)
+- Displays when invalid route is accessed
+- Provides link back to home screen
+- Uses themed components for consistent styling
 
-   ```bash
-    npx expo start
-   ```
+## Component Relationships
 
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
+```mermaid
+graph TD
+    A[_layout.tsx] --> B[index.tsx]
+    A --> C[notes/[id].tsx]
+    A --> D[+not-found.tsx]
+    B --> C
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## Styling Approach
+- Uses StyleSheet for component-specific styles
+- Implements dark theme through background colors
+- Maintains consistent spacing and typography
+- Uses themed components for text and views
 
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## Navigation Flow
+1. Home screen displays note list
+2. Tapping a note navigates to details view
+3. Invalid routes show 404 page
+4. 404 page provides return to home
